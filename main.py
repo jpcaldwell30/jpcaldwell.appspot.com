@@ -17,10 +17,41 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def root():
     return render_template('index.html')
+
+@app.route('/cloudmyip-project')
+def cloudmyipproject():
+    return render_template('cloudmyip-project.html')
+
+@app.route('/contactx-project')
+def contactxproject():
+    return render_template('contactx-project.html')
+
+@app.route('/custom-smart-light-switch-project')
+def customsmartlightswitchproject():
+    return render_template('custom-smart-light-switch-project.html')
+
+@app.route('/diy-smart-thermostat-project')
+def diysmartthermostatproject():
+    return render_template('diy-smart-thermostat-project.html')
+    
+@app.route('/home-automation-project')
+def homeautomationproject():
+    return render_template('home-automation-project.html')
+    
+@app.route('/personal-website-project')
+def personalwebsiteproject():
+    return render_template('personal-website-project.html')
+    
+@app.route('/projects-grid')
+def projectsgridcards():
+    return render_template('projects-grid-cards.html')
+    
+@app.route('/resume')
+def resume():
+    return render_template('resume.html')
 
 
 if __name__ == '__main__':
