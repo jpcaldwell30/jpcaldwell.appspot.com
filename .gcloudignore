@@ -12,3 +12,13 @@
 # below:
 .git
 .gitignore
+
+# Local-only artifacts that must never be uploaded to production
+env/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+main_test.py
+requirements-test.txt
