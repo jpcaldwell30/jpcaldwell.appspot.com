@@ -1,0 +1,215 @@
+/*
+ * Site theme. Loaded after the stock Bootstrap 5 stylesheet (bootstrap.min.css) and
+ * before custom-navbar.css. It restores the look the site had on Bootstrap 4.5.0 --
+ * custom colours, Lato font, pill buttons, white navbar links, undecorated links --
+ * through Bootstrap 5's own CSS variables, followed by the portfolio theme components.
+ * Keep bootstrap.min.css unmodified so it can be swapped for newer releases.
+ */
+
+/* ---- Bootstrap 4.5.0 look, expressed as Bootstrap 5 theme variables ---- */
+:root {
+  --bs-body-font-family: Lato, sans-serif;
+  --bs-link-color: #0ea0ff;
+  --bs-link-color-rgb: 14, 160, 255;
+  --bs-link-hover-color: #0075c1;
+  --bs-link-hover-color-rgb: 0, 117, 193;
+  --bs-primary: #0ea0ff;
+  --bs-primary-rgb: 14, 160, 255;
+  --bs-info: #6091ef;
+  --bs-info-rgb: 96, 145, 239;
+  --bs-dark: #343a40;
+  --bs-dark-rgb: 52, 58, 64;
+}
+
+/* Bootstrap 4 used 30px gutters (15px column/container padding); Bootstrap 5 uses 24px. */
+.container, .container-fluid, .container-sm, .container-md, .container-lg,
+.container-xl, .container-xxl, .row { --bs-gutter-x: 30px; }
+.g-0, .gx-0 { --bs-gutter-x: 0; } /* keep Bootstrap's no-gutter utilities winning */
+
+/* The old navbar padding: .5rem on phones, 1.2rem vertical from 576px up; 1rem horizontal. */
+.navbar { --bs-navbar-padding-y: .5rem; --bs-navbar-padding-x: 1rem; }
+@media (min-width: 576px) {
+  .navbar { --bs-navbar-padding-y: 1.2rem; }
+}
+
+/* Cards: Bootstrap 4 spacing, border colour and corner radius. */
+.card {
+  --bs-card-spacer-y: 1.25rem;
+  --bs-card-spacer-x: 1.25rem;
+  --bs-card-title-spacer-y: .75rem;
+  --bs-card-border-color: rgba(0, 0, 0, .125);
+  --bs-card-border-radius: .25rem;
+  --bs-card-inner-border-radius: calc(.25rem - 1px);
+  --bs-card-cap-padding-y: .75rem;
+  --bs-card-cap-padding-x: 1.25rem;
+  --bs-card-cap-bg: rgba(0, 0, 0, .03);
+}
+
+/* Bootstrap 5 underlines links by default; Bootstrap 4 only underlined on hover. */
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Bootstrap 5 scales h1-h3 fluidly below 1200px; keep the fixed Bootstrap 4 sizes. */
+h1, .h1 { font-size: 2.5rem; }
+h2, .h2 { font-size: 2rem; }
+h3, .h3 { font-size: 1.75rem; }
+
+/* Pill buttons with the roomier padding of the old theme. */
+.btn { --bs-btn-padding-x: 1rem; --bs-btn-border-radius: 2em; }
+.btn-lg { --bs-btn-padding-y: .5rem; --bs-btn-padding-x: 1.2rem; --bs-btn-border-radius: 2em; }
+.btn-sm { --bs-btn-padding-y: .25rem; --bs-btn-padding-x: .8rem; --bs-btn-border-radius: 2em; }
+
+.btn-primary {
+  --bs-btn-bg: #0ea0ff;
+  --bs-btn-border-color: #0ea0ff;
+  --bs-btn-hover-bg: #008ce7;
+  --bs-btn-hover-border-color: #0084da;
+  --bs-btn-focus-shadow-rgb: 50, 174, 255;
+  --bs-btn-active-bg: #0084da;
+  --bs-btn-active-border-color: #007ccd;
+  --bs-btn-disabled-bg: #0ea0ff;
+  --bs-btn-disabled-border-color: #0ea0ff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #0ea0ff;
+  --bs-btn-border-color: #0ea0ff;
+  --bs-btn-hover-bg: #0ea0ff;
+  --bs-btn-hover-border-color: #0ea0ff;
+  --bs-btn-focus-shadow-rgb: 14, 160, 255;
+  --bs-btn-active-bg: #0ea0ff;
+  --bs-btn-active-border-color: #0ea0ff;
+  --bs-btn-disabled-color: #0ea0ff;
+  --bs-btn-disabled-border-color: #0ea0ff;
+}
+
+/* Navbar: white links (Bootstrap's default is 50% transparent) and a white toggler icon. */
+.navbar-dark {
+  --bs-navbar-color: #fff;
+  --bs-navbar-hover-color: rgba(255, 255, 255, .75);
+  --bs-navbar-disabled-color: rgba(255, 255, 255, .25);
+  --bs-navbar-active-color: #fff;
+  --bs-navbar-brand-color: #fff;
+  --bs-navbar-brand-hover-color: #fff;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, .1);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-toggler { --bs-navbar-toggler-border-radius: 2em; }
+
+/* ---- Portfolio theme components ---- */
+.gradient.page-footer{border-top:none}
+.gradient.page-footer a{color:#fff!important;opacity:1!important}
+.gradient.page-footer .social-icons a{background-color:transparent}
+.portfolio-block{padding-bottom:60px;padding-top:60px}
+.portfolio-block .heading{margin-bottom:50px;text-align:center}
+.portfolio-block .heading h2{font-weight:700;font-size:1.4rem;text-transform:uppercase}
+.portfolio-block .heading p{text-align:center;max-width:420px;margin:auto;opacity:.7}
+.portfolio-block.block-intro{text-align:center}
+.portfolio-block.block-intro .about-me{max-width:800px;margin:0 auto}
+.portfolio-block.block-intro p{font-size:1.5em;font-weight:300;margin-bottom:30px}
+.portfolio-block.block-intro .avatar{width:150px;height:150px;background-size:cover;background-repeat:no-repeat;margin:auto;border-radius:100px;margin-bottom:30px}
+.portfolio-block.website h3{font-weight:700}
+.portfolio-block.website p{opacity:.9}
+.portfolio-block.mobile-app .text,.portfolio-block.website .text{text-align:center}
+.portfolio-block.photography{padding-top:0;padding-bottom:0}
+.portfolio-block.photography .item{overflow:hidden;margin-bottom:0;background:#000;opacity:1}
+.portfolio-block.photography .item a img{transition:.8s ease}
+.portfolio-block.skills{border-bottom:1px solid #ddd}
+.special-skill-item{margin-bottom:30px;text-align:center}
+.special-skill-item .icon{text-align:center;font-size:50px;background-color:#0ea0ff;color:#fff;height:70px;width:70px;line-height:69px;display:inline-block;border-radius:50%}
+.special-skill-item h3{font-size:1.3em;font-weight:700;margin-bottom:10px}
+.special-skill-item p{color:#8e8e8e}
+.portfolio-block.call-to-action{padding-top:60px;padding-bottom:60px}
+.portfolio-block.call-to-action .content{-ms-flex-direction:column;flex-direction:column}
+.portfolio-block.mobile-app{padding-top:80px;padding-bottom:80px}
+.portfolio-block.mobile-app h3{font-weight:700}
+.portfolio-block.mobile-app p{opacity:.9}
+.portfolio-block.cv{padding-top:70px}
+.portfolio-block.cv h2{font-weight:700;margin-bottom:70px}
+.portfolio-block.cv h3{font-size:1.3rem}
+.portfolio-block.cv .group{max-width:800px;margin:auto}
+.portfolio-block.cv .group:not(:first-child){margin-top:90px}
+.portfolio-block.cv .group .period{font-size:.8rem;float:none;font-weight:700;margin-top:4px;color:#6c757d;opacity:.8}
+.portfolio-block.cv .group .organization{font-size:.85em;background-color:#0ea0ff;display:inline-block;color:#fff;padding:2px 8px;border-radius:2em}
+.portfolio-block.cv .education.group .organization{background-color:#20c997}
+.portfolio-block.cv .group .item{padding-bottom:10px;margin-bottom:25px;border-bottom:1px solid #eee}
+.portfolio-block.cv .group h2+.item{padding-top:25px;border-top:1px solid #eee}
+.portfolio-block.cv .group .item .row{margin-bottom:5px}
+.portfolio-block.cv .education h3,.portfolio-block.cv .work-experience h3{font-weight:700}
+.portfolio-info-card.skills h3{margin-top:25px;font-size:1rem;font-weight:700}
+.portfolio-info-card.skills .progress{height:3px}
+.portfolio-info-card.contact-info .icon{font-size:1.3em;color:#6091ef;position:relative;bottom:4px}
+.portfolio-block.cv .hobbies p{max-width:700px;margin:auto;font-size:1.2em;font-weight:300}
+.portfolio-block.projects-with-sidebar .sidebar{padding-left:20px;padding-bottom:15px;display:-ms-flexbox;display:flex;overflow:auto}
+.portfolio-block.projects-with-sidebar .sidebar li:not(:last-child){margin-right:20px}
+.portfolio-block.projects-with-sidebar .sidebar .active{font-weight:700}
+.portfolio-block.projects-with-sidebar a{color:#212529;font-weight:300}
+.portfolio-block.projects-with-sidebar a:hover{opacity:.8}
+.portfolio-block.compact-grid .item{overflow:hidden;margin-bottom:0;background:#000;opacity:1}
+.portfolio-block.compact-grid .item .image{transition:.8s ease}
+.portfolio-block.compact-grid .item .info{position:relative;display:inline-block}
+.portfolio-block.compact-grid .item .description{display:grid;position:absolute;bottom:0;left:0;padding:10px;font-size:17px;line-height:18px;width:100%;padding-top:15px;padding-bottom:15px;opacity:1;color:#fff;transition:.8s ease;text-align:center;text-shadow:1px 1px 1px rgba(0,0,0,.2);background:linear-gradient(180deg,transparent,rgba(0,0,0,.39))}
+.portfolio-block.compact-grid .item .description .description-heading{font-size:1em;font-weight:700}
+.portfolio-block.compact-grid .item .description .description-body{font-size:.8em;margin-top:10px;font-weight:300}
+.portfolio-block.projects-cards h6{font-size:1.1rem;font-weight:700}
+.portfolio-block.projects-cards a img{transition:.5s ease}
+.portfolio-block.projects-cards .card img{box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.portfolio-block.projects-cards .card-body{text-align:center}
+.portfolio-block.projects-cards .card-body p{font-size:.9em}
+.portfolio-block.projects-cards a{color:#212529}
+.portfolio-block.projects-cards a:hover{text-decoration:none}
+.portfolio-block.projects-cards .card{margin-bottom:30px}
+.project-card-no-image .tags{text-transform:uppercase;float:right;font-size:.75em;margin-top:7px}
+.project-card-no-image .tags a{color:#979797}
+.portfolio-block form{max-width:650px;padding:20px;margin:auto;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.portfolio-block.hire-me form .button button{margin-top:30px}
+.portfolio-block.project .image{height:180px;margin-bottom:50px;background-size:cover;background-repeat:no-repeat;width:100%}
+.portfolio-block.project h3{font-weight:700;font-size:1.4em;margin-bottom:20px}
+.portfolio-block.project .info p{font-size:1.1em;font-weight:300}
+.portfolio-block.project .meta{padding-left:15px}
+.portfolio-block.project .meta .tags .meta-heading{color:#22245b;margin-bottom:5px;font-weight:700}
+.portfolio-block.project .meta .tags{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;color:#979797}
+.portfolio-block.project .tags a{color:#979797}
+.portfolio-block.project .more-projects{margin-top:50px;border-top:1px solid #ddd;padding-top:60px}
+.portfolio-block.project .more-projects h3{font-size:1.5rem;font-weight:700;margin-bottom:60px}
+.portfolio-block.project .gallery{margin-top:30px}
+.portfolio-block.project .gallery .item{margin-bottom:20px}
+.portfolio-block.project .gallery .item img{box-shadow:0 2px 10px rgba(0,0,0,.15);transition:.4s}
+.portfolio-block.partners{padding:50px 0;text-align:center;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-ms-flex-direction:column;flex-direction:column}
+.portfolio-block.partners a img{max-width:170px;-webkit-filter:grayscale(.8);filter:grayscale(.8)}
+.portfolio-block.partners a:not(:last-child) img{margin-bottom:20px}
+@media (min-width:576px) {.portfolio-block.project .image{height:240px}}
+@media (min-width:576px) {.scale-on-hover:hover{-webkit-transform:scale(1.05);transform:scale(1.05);box-shadow:0 10px 10px rgba(0,0,0,.15)!important}}
+@media (min-width:576px) {.zoom-on-hover:hover .image{-webkit-transform:scale(1.3);transform:scale(1.3);opacity:.7}}
+@media (min-width:576px) {.portfolio-block.compact-grid .item .description{opacity:0}}
+@media (min-width:576px) {.portfolio-block.compact-grid .item a:hover .description{opacity:1}}
+@media (min-width:768px) {.portfolio-block .heading{margin-bottom:80px}}
+@media (min-width:768px) {.portfolio-block{padding-bottom:100px;padding-top:100px}}
+@media (min-width:768px) {.portfolio-block .heading h2{font-size:2rem}}
+@media (min-width:768px) {.portfolio-block.cv .details{margin-top:0}}
+@media (min-width:768px) {.portfolio-block.cv .item{font-weight:300}}
+@media (min-width:768px) {.portfolio-block form{padding:50px}}
+@media (min-width:768px) {.portfolio-block.cv .group .period{float:right}}
+@media (min-width:768px) {.portfolio-block.project .meta{padding-left:45px}}
+@media (min-width:768px) {.portfolio-block.project .image{height:340px}}
+@media (min-width:768px) {.portfolio-block.call-to-action .content{-ms-flex-direction:row;flex-direction:row}}
+@media (min-width:768px) {.portfolio-block.call-to-action h3{margin-right:40px}}
+@media (min-width:768px) {.portfolio-block.projects-with-sidebar .sidebar{display:block}}
+@media (min-width:768px) {.portfolio-block.partners{-ms-flex-direction:row;flex-direction:row}}
+@media (min-width:768px) {.portfolio-block.partners a:not(:last-child) img{margin-right:20px;margin-bottom:0}}
+@media (min-width:992px) {.portfolio-block.mobile-app .text,.portfolio-block.website .text{text-align:right}}
+@media (min-width:992px) {.portfolio-block.project .image{height:450px}}
+.portfolio-navbar.navbar{box-shadow:0 4px 10px rgba(0,0,0,.1)}
+.portfolio-navbar .navbar-nav .nav-link{font-weight:700}
+.portfolio-navbar .navbar-nav .nav-item{padding-right:2rem}
+.portfolio-navbar .navbar-nav:last-child .item:last-child,.portfolio-navbar .navbar-nav:last-child .item:last-child a{padding-right:0}
+.portfolio-navbar .logo{font-size:1.5rem}
+.portfolio-navbar.fixed-top+.page{padding-top:62px}
+@media (min-width:576px) {.portfolio-navbar.fixed-top+.page{padding-top:5.5rem}}
+.page-footer{padding-top:35px;border-top:1px solid #ddd;text-align:center;padding-bottom:20px}
+.page-footer a{margin:0 10px;color:#282b2d;font-size:18px}
+.page-footer .links,.page-footer a{display:inline-block}
+.page-footer .social-icons{margin-top:20px;margin-bottom:16px}
+.page-footer .social-icons a{font-size:18px;margin:0 3px;color:#fff;border:1px solid;opacity:.75;border-radius:50%;width:36px;display:inline-block;height:36px;text-align:center;background-color:#c5c9d2;line-height:34px}
+.page-footer .social-icons a:hover{opacity:1}
+
